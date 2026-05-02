@@ -1,0 +1,176 @@
+<!-- HTML5 document declaration -->
+<!DOCTYPE html>
+
+<!-- Root HTML element -->
+<html lang="en">
+
+<head>
+
+    <!-- Character encoding -->
+    <meta charset="UTF-8">
+
+    <!-- Responsive layout support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page title -->
+    <title>Restaurant Dashboard</title>
+
+    <!-- Link CSS stylesheet -->
+    <link rel="stylesheet" href="CSS/styles.css">
+
+</head>
+
+<body>
+
+<!-- Main dashboard container -->
+<div class="dashboard">
+
+    <!-- Sidebar navigation -->
+    <aside class="sidebar">
+
+        <!-- Restaurant name/logo -->
+        <h2>Restaurant Panel</h2>
+
+        <!-- Navigation menu -->
+        <ul>
+
+            <!-- Dashboard link -->
+            <li><a href="#">Dashboard</a></li>
+
+            <!-- Orders management -->
+            <li><a href="#">Orders</a></li>
+
+            <!-- Menu management -->
+            <li><a href="menu.html">Menu</a></li>
+
+            <!-- Reservations -->
+            <li><a href="#">Reservations</a></li>
+
+            <!-- Staff management -->
+            <li><a href="#">Staff</a></li>
+
+            <!-- Logout -->
+            <li><a href="#">Logout</a></li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main content -->
+    <main class="content">
+
+        <!-- Header -->
+        <header>
+
+            <!-- Dashboard title -->
+            <h1>Restaurant Dashboard</h1>
+
+            <!-- Button to add menu item -->
+            <button onclick="openForm()">Add Menu Item</button>
+
+        </header>
+
+        <!-- Statistics section -->
+        <section class="stats">
+
+            <!-- Total orders card -->
+            <div class="card">
+                <h3>Today's Orders</h3>
+                <p id="orders">45</p>
+            </div>
+
+            <!-- Revenue card -->
+            <div class="card">
+                <h3>Today's Revenue</h3>
+                <p>$820</p>
+            </div>
+
+            <!-- Tables card -->
+            <div class="card">
+                <h3>Active Tables</h3>
+                <p>12</p>
+            </div>
+
+            <!-- Menu items -->
+            <div class="card">
+                <h3>Menu Items</h3>
+                <p id="menuCount">18</p>
+            </div> 
+
+        </section>
+
+        <!-- Reservations table -->
+        <section class="table-section">
+
+            <!-- Section title -->
+            <h2>Today's Reservations</h2>
+
+            <!-- Table -->
+            <table>
+
+                <!-- Table headers -->
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Customer</th>
+                        <th>Table</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+
+                <!-- Reservation data -->
+                <tbody>
+
+                    <tr>
+                        <td>#201</td>
+                        <td>James</td>
+                        <td>5</td>
+                        <td>7:00 PM</td>
+                    </tr>
+
+                    <tr>
+                        <td>#202</td>
+                        <td>Linda</td>
+                        <td>3</td>
+                        <td>8:00 PM</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- Modal form to add menu items -->
+<div class="modal" id="menuForm">
+
+    <div class="form-box">
+
+        <!-- Close button -->
+        <span onclick="closeForm()">X</span>
+
+        <!-- Form title -->
+        <h2>Add Menu Item</h2>
+
+        <!-- Food name input -->
+        <input type="text" id="foodName" placeholder="Food Name">
+
+        <!-- Price input -->
+        <input type="number" id="foodPrice" placeholder="Price">
+
+        <!-- Add button -->
+        <button onclick="addMenu()">Add Item</button>
+
+    </div>
+
+</div>
+
+<!-- Link JavaScript -->
+<script src="javascript/scripts.js"></script>
+
+</body>
+</html>

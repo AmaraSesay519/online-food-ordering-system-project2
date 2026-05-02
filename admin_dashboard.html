@@ -1,0 +1,188 @@
+<!-- Declare HTML5 document -->
+<!DOCTYPE html>
+
+<!-- Root HTML tag -->
+<html lang="en">
+
+<head>
+
+    <!-- Character encoding -->
+    <meta charset="UTF-8">
+
+    <!-- Responsive design for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page title -->
+    <title>Food Ordering Admin Dashboard</title>
+
+    <!-- Link external CSS file -->
+    <link rel="stylesheet" href="CSS/styles.css">
+
+</head>
+
+<body>
+
+<!-- Main container holding sidebar and content -->
+<div class="container">
+
+    <!-- Sidebar navigation -->
+    <aside class="sidebar">
+
+        <!-- Dashboard logo/title -->
+        <h2>FoodAdmin</h2>
+
+        <!-- Navigation links -->
+        <ul>
+
+            <!-- Dashboard button -->
+            <li><a href="admin_dashboard.html">Dashboard</a></li>
+
+            <!-- Orders section -->
+            <li><a href="#">Orders</a></li>
+
+            <!-- Food menu section -->
+            <li><a href="menu.html">Food Menu</a></li>
+
+            <!-- Customers section -->
+            <li><a href="#">Customers</a></li>
+
+            <!-- Reports section -->
+            <li><a href="#">Reports</a></li>
+
+            <!-- Logout option -->
+            <li><a href="#">Logout</a></li>
+        </ul>
+
+    </aside>
+
+    <!-- Main dashboard content -->
+    <main class="main">
+
+        <!-- Top header -->
+        <header>
+
+            <!-- Page title -->
+            <h1>Admin Dashboard</h1>
+
+            <!-- Button to open add food form -->
+            <button onclick="openModal()">Add Food</button>
+
+        </header>
+
+        <!-- Statistics cards -->
+        <section class="cards">
+
+            <!-- Total orders card -->
+            <div class="card">
+                <h3>Total Orders</h3>
+                <p id="orders">120</p>
+            </div>
+
+            <!-- Revenue card -->
+            <div class="card">
+                <h3>Total Revenue</h3>
+                <p>le 2500</p>
+            </div>
+
+            <!-- Customers card -->
+            <div class="card">
+                <h3>Customers</h3>
+                <p>75</p>
+            </div>
+
+        </section>
+
+        <!-- Orders table -->
+        <section class="orders">
+
+            <!-- Table title -->
+            <h2>Recent Orders</h2>
+
+            <!-- Table -->
+            <table>
+
+                <!-- Table headings -->
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Customer</th>
+                        <th>Food</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <!-- Table data -->
+                <tbody id="orderTable">
+
+                    <tr>
+                        <td>#101</td>
+                        <td>John</td>
+                        <td>Pizza</td>
+                        <td>Delivered</td>
+                    </tr>
+
+                    <tr>
+                        <td>#102</td>
+                        <td>Mary</td>
+                        <td>Burger</td>
+                        <td>Preparing</td>
+                    </tr>
+
+                    <tr>
+                        <td>#103</td>
+                        <td>Amara</td>
+                        <td>Rice</td>
+                        <td>Delivered</td>
+                    </tr>
+
+                    <tr>
+                        <td>#104</td>
+                        <td>Yaqub</td>
+                        <td>Buger</td>
+                        <td>Preparing</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- Modal for adding new food -->
+<div class="modal" id="foodModal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+
+        <!-- Close button -->
+        <span onclick="closeModal()">&times;</span>
+
+        <!-- Form title -->
+        <h2>Add New Food</h2>
+
+        <!-- Food name input -->
+        <input type="text" id="foodName" placeholder="Food Name">
+
+        <!-- Price input -->
+        <input type="number" id="foodPrice" placeholder="Price">
+
+        <!-- Add button -->
+        <button onclick="addFood()">Add Food</button>
+
+    </div>
+
+</div>
+
+<!-- Link JavaScript -->
+<script src="javascript/scripts.js"></script>
+
+
+<footer class=" f-fotter">
+    @2026 ONLINE FOOD ORDERING ALL RESERVED FOR YOU
+</footer>
+</body>
+</html>
