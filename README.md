@@ -1,9 +1,11 @@
 ## Team Members for this project
-- 1 Amara sesay 10519
-- 2 Saidu I Kamara 1655
-- 3 Yusif Koroma 10229
-- 4 Samuell E Moiwo 11249
-- 5 Abubakarr Forfanah 10510
+|No.| Name |Id| Role |
+|----|------|-----|------|
+|1| Amara Yaqub | 10519 | Developer of the Database,Backend Developer  and Documentation of the project |
+|2| Saidu I Kamara|1655 | Backend Developer of Javascript pages|
+|3| Yusif Koroma |10229| Developer of the php pages |
+|4| Samuell E Moiwo  | 11249 |develop the  UI Designer |
+|5| Abubakarr Forfanah  | 10510 | UI Designer and configuration of the project |
 
 # Online Food Ordering System
 
@@ -27,7 +29,7 @@ The project was developed as part of a **Web Programming course project** and fo
 - **User Profile**: Manage profile information and saved addresses
 
 ### Admin/Restaurant Features
-- Restaurant management (to be implemented)
+- Restaurant management the Restaurant Owner add,upload and Save Items on the Menu
 - Menu management (to be implemented)
 - Order management (to be implemented)
 
