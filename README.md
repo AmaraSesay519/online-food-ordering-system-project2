@@ -1,3 +1,4 @@
+# Welcome To Our Online Food Ordering System (Y.S.S.A.A)
 ## Team Members for this project
 |No.| Name |Id| Role |
 |----|------|-----|------|
@@ -9,7 +10,7 @@
 
 # Online Food Ordering System
 
-A complete web-based food ordering system with responsive design, built using HTML5, CSS3, JavaScript, PHP, and MySQL.
+A complete web-based food ordering system with responsive design,built with Django (backend & frontend) and SQLite database
 
 ## Project Overview
 
@@ -19,79 +20,114 @@ The project was developed as part of a **Web Programming course project** and fo
 
 ## Features
 
-### Customer Features
-- **User Authentication**: Secure login and signup
-- **Restaurant Browsing**: Search and browse restaurants by cuisine, location
-- **Menu Viewing**: Detailed menu items with descriptions and pricing
-- **Shopping Cart**: Add/remove items, modify quantities
-- **Order Placement**: Easy checkout with delivery address and payment options
-- **Order Tracking**: View order history and status
-- **User Profile**: Manage profile information and saved addresses
+- **User Authentication**: Register, login, logout functionality
+- **Restaurant Browsing**: View all restaurants and filter by category
+- **Menu Management**: Browse menu items with categories (Appetizers, Main Course, Desserts, Beverages, Snacks)
+- **Shopping Cart**: Add, update, and remove items from cart
+- **Order Placement**: Complete checkout with delivery details
+- **Order Tracking**: View order history and track order status
+- **User Profile**: Manage personal information and delivery address
+- **Admin Panel**: Full Django admin interface for managing restaurants, menus, orders, and users
 
-### Admin/Restaurant Features
-- Restaurant management the Restaurant Owner add,upload and Save Items on the Menu
-- Menu management (to be implemented)
-- Order management (to be implemented)
+## Tech Stack
 
-## System Requirements
+- **Backend**: Django 5.2.3
+- **Frontend**: Django Templates with HTML/CSS 
+- **Database**: SQLite (Django default)
+- **Image Processing**: Pillow
 
-### Frontend
-- HTML5 for page structure
-- CSS3 for responsive design and styling
-- Vanilla JavaScript for interactivity and AJAX requests
+## Installation & Setup
 
-### Backend
-- PHP 7.4+ with MySQLi support
-- MySQL 5.7+ or MariaDB
+### Prerequisites
 
-### Browser Compatibility
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers (iOS Safari, Chrome Mobile)
+- Python 3.8 or higher
+- pip (Python package manager)
+
+### Step 1: Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Step 2: Database Migrations
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+### Step 3: Create Superuser (Admin)
+
+```bash
+python manage.py createsuperuser
+```
+
+Follow the prompts to create an admin account.
+
+### Step 4: Run Development Server
+
+```bash
+python manage.py runserver
+```
+
+The application will be available at: `http://127.0.0.1:8000/`
+
+### Step 5: Access Admin Panel
+
+Visit: `http://127.0.0.1:8000/admin/`
+
+Login with the superuser credentials created in Step 3.
+
+## Usage
+
+### Adding Data via Admin Panel
+
+1. Login to the admin panel at `/admin/`
+2. Add restaurants with details (name, description, address, phone, image)
+3. Add menu items for each restaurant (name, description, price, category, image)
+4. Menu items can be marked as available/unavailable
+
+### User Workflow
+
+1. **Register**: Create a new account at `/register/`
+2. **Login**: Login at `/login/`
+3. **Browse Restaurants**: View all restaurants at `/restaurants/`
+4. **View Menu**: Click on a restaurant to see its menu
+5. **Add to Cart**: Select items and add to cart
+6. **Checkout**: Provide delivery details and place order
+7. **Track Orders**: View order history and status
 
 ## Project Structure
 
 ```
-food-ordering-system/
-├── pages/                          # HTML pages
-│   ├── index.html                 # Home page
-│   ├── login.html                 # User login
-│   ├── signup.html                # User registration
-│   ├── restaurants.html           # Restaurant listing
-│   ├── menu.html                  # Restaurant menu
-│   ├── cart.html                  # Shopping cart
-│   ├── checkout.html              # Order checkout
-│   ├── orders.html                # Order history
-│   └── profile.html               # User profile
-├── assets/
-│   ├── css/
-│   │   └── style.css              # Main stylesheet
-│   ├── js/
-│   │   ├── app.js                 # Main application logic
-│   │   ├── auth.js                # Authentication handlers
-│   │   ├── home.js                # Home page logic
-│   │   ├── restaurants.js         # Restaurant page logic
-│   │   ├── menu.js                # Menu page logic
-│   │   ├── cart.js                # Shopping cart logic
-│   │   ├── checkout.js            # Checkout logic
-│   │   ├── orders.js              # Orders page logic
-│   │   └── profile.js             # Profile page logic
-│   └── images/                    # Image assets
-├── backend/
-│   ├── config.php                 # Database configuration
-│   ├── handlers/
-│   │   ├── auth.php               # Authentication API
-│   │   ├── restaurants.php        # Restaurant API
-│   │   ├── users.php              # User management API
-│   │   ├── cart.php               # Shopping cart API
-│   │   └── orders.php             # Orders API
-│   └── api/                       # Additional API endpoints
-└── database/
-    └── schema.sql                 # Database schema
+ONLINE FOOD ORDERING SYSTEM/
+├── core/                          # Main application
+│   ├── templates/core/           # HTML templates
+│   │   ├── base.html            # Base template
+│   │   ├── home.html            # Homepage
+│   │   ├── restaurant_list.html # Restaurant listing
+│   │   ├── restaurant_detail.html # Restaurant menu
+│   │   ├── cart.html            # Shopping cart
+│   │   ├── checkout.html        # Checkout page
+│   │   ├── order_detail.html    # Order details
+│   │   ├── order_history.html   # Order history
+│   │   ├── login.html           # Login page
+│   │   ├── register.html        # Registration page
+│   │   └── profile.html         # User profile
+│   ├── static/css/              # CSS files
+│   │   └── style.css           # Main stylesheet
+│   ├── models.py               # Database models
+│   ├── views.py                # View functions
+│   ├── urls.py                 # URL routing
+│   └── admin.py                # Admin configuration
+├── food_ordering_system/        # Project settings
+│   ├── settings.py             # Django settings
+│   ├── urls.py                 # Main URL configuration
+│   └── wsgi.py                 # WSGI configuration
+├── manage.py                    # Django management script
+├── requirements.txt             # Python dependencies
+└── README.md                    # This file
 ```
-
 ## Source Code Repository
 
 The full source code for this project is available on GitHub:
@@ -99,177 +135,82 @@ The full source code for this project is available on GitHub:
 **GitHub Repository:**
 https://github.com/AmaraSesay519/online-food-ordering-system-project2.git
 
+## Database Models
 
-## Installation & Setup
+- **Customer**: User profile with phone and address
+- **Restaurant**: Restaurant information and details
+- **MenuItem**: Food items with categories and pricing
+- **Cart**: Shopping cart for each user
+- **CartItem**: Items in the cart
+- **Order**: Customer orders with status tracking
+- **OrderItem**: Items in each order
 
-### 1. Database Setup
+## Order Status Flow
 
-1. Open phpMyAdmin or MySQL command line
-2. Create database:
-   ```sql
-   CREATE DATABASE food_ordering_system;
-   ```
-3. Import the schema:
-   ```sql
-   SOURCE database/schema.sql;
-   ```
+1. **Pending**: Order just placed
+2. **Confirmed**: Order confirmed by restaurant
+3. **Preparing**: Food is being prepared
+4. **Out for Delivery**: Order is on the way
+5. **Delivered**: Order delivered successfully
+6. **Cancelled**: Order cancelled
 
-Or use phpMyAdmin to import `database/schema.sql`
+## Menu Categories
 
-### 2. Configure Database Connection
+- Appetizer
+- Main Course
+- Dessert
+- Beverage
+- Snack
 
-Edit `backend/config.php` and update database credentials:
-```php
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', 'your_password');
-define('DB_NAME', 'food_ordering_system');
-```
+## Features in Detail
 
-### 3. File Permissions
+### Responsive Design
+- Mobile-friendly interface
+- Works on all screen sizes
 
-Ensure these directories are writable:
+### User Experience
+- Clean and modern UI
+- Intuitive navigation
+- Flash messages for user feedback
+- Form validation
+
+### Security
+- CSRF protection on all forms
+- Password hashing
+- Login required for ordering
+- Secure admin panel
+
+## Development
+
+### Running Migrations
+
 ```bash
-chmod 755 assets/images/
+python manage.py makemigrations
+python manage.py migrate
 ```
 
-### 4. Start Your Server
+### Creating Superuser
 
-If using XAMPP:
-- Place the project in `C:\xampp\htdocs\food-ordering-system`
-- Start Apache and MySQL from XAMPP Control Panel
-- Access via `http://localhost/food-ordering-system/pages/index.html`
+```bash
+python manage.py createsuperuser
+```
 
-## API Endpoints
+### Collecting Static Files (Production)
 
-### Authentication
-- `POST /backend/handlers/auth.php?action=register` - User registration
-- `POST /backend/handlers/auth.php?action=login` - User login
-- `GET /backend/handlers/auth.php?action=logout` - User logout
-- `GET /backend/handlers/auth.php?action=check_session` - Check session status
+```bash
+python manage.py collectstatic
+```
 
-### Restaurants
-- `GET /backend/handlers/restaurants.php?action=get_all` - Get all restaurants
-- `GET /backend/handlers/restaurants.php?action=get_one&id={id}` - Get restaurant details
-- `GET /backend/handlers/restaurants.php?action=search&query={query}` - Search restaurants
+### Running Development Server
 
-### Shopping Cart
-- `GET /backend/handlers/cart.php?action=get` - Get cart items
-- `POST /backend/handlers/cart.php?action=add` - Add to cart
-- `POST /backend/handlers/cart.php?action=update` - Update cart item
-- `POST /backend/handlers/cart.php?action=remove` - Remove from cart
-- `POST /backend/handlers/cart.php?action=clear` - Clear cart
-
-### Orders
-- `POST /backend/handlers/orders.php?action=create` - Create order
-- `GET /backend/handlers/orders.php?action=get_user_orders` - Get user orders
-- `GET /backend/handlers/orders.php?action=get_order&order_id={id}` - Get order details
-- `POST /backend/handlers/orders.php?action=update_status` - Update order status
-
-### User Management
-- `GET /backend/handlers/users.php?action=get_profile` - Get user profile
-- `POST /backend/handlers/users.php?action=update_profile` - Update profile
-- `POST /backend/handlers/users.php?action=change_password` - Change password
-- `POST /backend/handlers/users.php?action=add_address` - Add delivery address
-- `GET /backend/handlers/users.php?action=get_addresses` - Get delivery addresses
-- `GET /backend/handlers/users.php?action=delete_address&address_id={id}` - Delete address
-
-## Database Schema
-
-### Tables
-- `users` - Customer and restaurant accounts
-- `restaurants` - Restaurant information
-- `menu_categories` - Food categories
-- `menu_items` - Individual menu items
-- `cart` - Shopping cart items
-- `orders` - Order information
-- `order_items` - Items in each order
-- `payments` - Payment details
-- `reviews` - Order reviews and ratings
-- `delivery_addresses` - Saved delivery addresses
-
-## Security Features
-
-- Password hashing with bcrypt
-- SQL prepared statements to prevent injection
-- Session-based authentication
-- CSRF protection ready
-
-## Form Validation
-
-- Frontend validation using HTML5 and JavaScript
-- Backend validation on all API endpoints
-- Email format validation
-- Password strength requirements
-
-## Responsive Design
-
-The system is fully responsive with breakpoints at:
-- 768px (tablets)
-- 480px (mobile phones)
-
-## Usage
-
-1. **Sign Up**: Create new customer account
-2. **Browse Restaurants**: Search by name, cuisine, or location
-3. **View Menu**: Click restaurant to see menu items
-4. **Add to Cart**: Select items and add to shopping cart
-5. **Checkout**: Enter delivery address and payment method
-6. **Track Orders**: View order history and status
-
-## Payment Methods
-
-Currently supports (UI ready for integration):
-- Credit/Debit Card (Stripe integration ready)
-- PayPal
-- Apple Pay / Google Pay
-- Cash on Delivery
-
-## Future Enhancements
-
-- Payment gateway integration (Stripe, PayPal)
-- Real-time order tracking with GPS
-- Restaurant dashboard
-- Admin panel
-- Email notifications
-- SMS notifications
-- Coupon and discount codes
-- Ratings and reviews
-- Customer feedback
-- Multi-language support
-
-## Troubleshooting
-
-### Database Connection Error
-- Check MySQL is running
-- Verify credentials in `config.php`
-- Ensure database name is correct
-
-### Session Not Working
-- Check cookies are enabled
-- Verify PHP session path is writable
-- Check browser security settings
-
-### AJAX Requests Not Working
-- Check browser console for errors
-- Verify API endpoint URLs
-- Check CORS settings if accessing from different domain
-
-## Support
-
-For issues or questions, please contact the development team.
+```bash
+python manage.py runserver
+```
 
 ## License
 
-This project is provided as-is for educational purposes.
+This project is open source and available for educational purposes.
 
-## Changelog
+## Support
 
-### Version 1.0 (Initial Release)
-- Complete frontend with all pages
-- Full backend API for user management
-- Restaurant browsing and menu viewing
-- Shopping cart functionality
-- Order placement and tracking
-- User profile management
-- Responsive design for all devices
+For issues or questions, please check the Django documentation or create an issue in the project repository.
