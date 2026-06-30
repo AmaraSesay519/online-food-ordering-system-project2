@@ -2,7 +2,7 @@
 ## Team Members for this project
 |No.| Name |Id| Role |
 |----|------|-----|------|
-|1| Amara Yaqub | 10519 | Developer of the Database,Backend Developer  and Documentation of the project |
+|1| Amara Sesay | 10519 | Developer of the Database,Backend Developer  and Documentation of the project |
 |2| Saidu I Kamara|1655 | Backend Developer of Javascript pages|
 |3| Yusif Koroma |10229| Developer of the php pages |
 |4| Samuell E Moiwo  | 11249 |develop the  UI Designer |
