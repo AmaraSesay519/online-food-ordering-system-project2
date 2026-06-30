@@ -4,10 +4,9 @@
 |----|------|-----|------|
 |1| Amara Sesay | 10519 | Develop the Database, Backend and Documentation of the project |
 |2| Saidu I Kamara|1655 | Work on register page, login page,index page and customer dashboard  pages|
-|3| Yusif Koroma |10229| work on the add to cart pages,menu page, waiteress dashboard page and order page |
-
+|3| Yusif Koroma |10229| work on the add to cart pages,menu page, and waiteress dashboard page |
 |4| Samuell E Moiwo  | 11249 |develop the  UI Designer |
-|5| Abubakarr Forfanah  | 10510 | help  in UI Designer, uploading of images  and configuration of the project |
+|5| Abubakarr Forfanah  | 10510 |uploading of images  and configuration of the project|
 
 # Online Food Ordering System
 
