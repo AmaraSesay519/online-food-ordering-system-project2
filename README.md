@@ -2,11 +2,12 @@
 ## Team Members for this project
 |No.| Name |Id| Role |
 |----|------|-----|------|
-|1| Amara Sesay | 10519 | Developer of the Database,Backend Developer  and Documentation of the project |
-|2| Saidu I Kamara|1655 | Backend Developer of Javascript pages|
-|3| Yusif Koroma |10229| Developer of the php pages |
+|1| Amara Sesay | 10519 | Develop the Database, Backend and Documentation of the project |
+|2| Saidu I Kamara|1655 | Work on register page, login page,index page and customer dashboard  pages|
+|3| Yusif Koroma |10229| work on the add to cart pages,menu page, waiteress dashboard page and order page |
+
 |4| Samuell E Moiwo  | 11249 |develop the  UI Designer |
-|5| Abubakarr Forfanah  | 10510 | UI Designer and configuration of the project |
+|5| Abubakarr Forfanah  | 10510 | help  in UI Designer, uploading of images  and configuration of the project |
 
 # Online Food Ordering System
 
