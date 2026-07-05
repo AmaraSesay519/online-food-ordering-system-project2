@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
         ("core", "0002_alter_menuitem_image"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
-
+    
     operations = [
         migrations.CreateModel(
             name="ChatMessage",

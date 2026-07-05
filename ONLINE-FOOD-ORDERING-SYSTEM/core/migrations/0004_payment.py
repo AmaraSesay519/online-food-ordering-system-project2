@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
     dependencies = [
         ("core", "0003_chatmessage"),
     ]
-
+ 
     operations = [
         migrations.CreateModel(
             name="Payment",

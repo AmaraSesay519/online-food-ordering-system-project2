@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
     dependencies = [
         ("core", "0008_customer_profile_photo"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-    ]
+    ] 
 
     operations = [
         migrations.AddField(

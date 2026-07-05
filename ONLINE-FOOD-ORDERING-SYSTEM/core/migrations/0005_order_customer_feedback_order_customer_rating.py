@@ -8,7 +8,7 @@ class Migration(migrations.Migration):
     dependencies = [
         ("core", "0004_payment"),
     ]
-
+    
     operations = [
         migrations.AddField(
             model_name="order",

@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
     dependencies = [
         ("core", "0005_order_customer_feedback_order_customer_rating"),
     ]
-
+    
     operations = [
         migrations.CreateModel(
             name="Address",

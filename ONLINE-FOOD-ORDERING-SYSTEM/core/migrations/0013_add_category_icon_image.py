@@ -13,3 +13,4 @@ class Migration(migrations.Migration):
             field=models.ImageField(upload_to='category_icons/', null=True, blank=True),
         ),
     ]
+

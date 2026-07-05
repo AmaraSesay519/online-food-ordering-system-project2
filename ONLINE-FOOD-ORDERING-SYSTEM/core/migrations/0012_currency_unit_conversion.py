@@ -14,7 +14,7 @@ def forwards(apps, schema_editor):
         'OrderItem': ['price'],
         'Payment': ['amount'],
     }
-
+    
     for model_name, fields in ModelFieldMap.items():
         Model = apps.get_model('core', model_name)
         for obj in Model.objects.all():
