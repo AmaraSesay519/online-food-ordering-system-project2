@@ -1,12 +1,14 @@
-# Welcome To Our Online Food Ordering System (Y.S.S.A.A)
-## Team Members for this project
-|No.| Name |Id| Role |
-|----|------|-----|------|
-|1| Amara Sesay | 10519 | Develop the Database, Backend and Documentation of the project |
-|2| Saidu I Kamara|1655 | Work on register page, login page,index page and customer dashboard  pages|
-|3| Yusif Koroma |10229| work on the add to cart pages,menu page, and waiteress dashboard page |
-|4| Samuell E Moiwo  | 11249 |develop the  UI Designer |
-|5| Abubakarr Forfanah  | 10510 |uploading of images  and configuration of the project|
+# Online Food Ordering System (Y.S.S.A.A)
+
+## Project Team
+
+| No. | Name | ID | Role & Responsibilities |
+|-----|------|-----|--------------------------|
+| 1 | Amara Sesay | 10519 | Database design, backend development, Register,login, all dashboards and project documentation |
+| 2 | Saidu I. Kamara | 1655 | Sidebar, cart, active orders, customer orders, delivery dashboard, and checkout pages |
+| 3 | Yusif Koroma | 10229 | Manage menu, manage orders, manage payments, manage reviews, manage users, and order detail pages |
+| 4 | Samuell E. Moiwo | 11249 | UI design, About, Base, Home, and customer profile pages |
+| 5 | Abubakarr Forfanah | 10510 | Delivery profile, floor map, order history, live map, order queue, order tracking, and view reports |
 
 # Online Food Ordering System
 
