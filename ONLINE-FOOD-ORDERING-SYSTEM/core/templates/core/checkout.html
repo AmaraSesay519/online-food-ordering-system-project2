@@ -1,0 +1,212 @@
+{% extends 'core/base.html' %}
+{% load humanize %}
+{% load custom_filters %}
+
+{% block title %}Checkout - yoni Fast Food Restaurant{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Header -->
+    <div class="text-center mb-5">
+        <h1 class="fw-bold mb-3">
+            <i class="fas fa-credit-card text-primary me-2"></i>Checkout
+        </h1>
+        <p class="text-muted">Complete your order</p>
+    </div>
+
+    <div class="row g-4">
+        <!-- Order Summary -->
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm bg-light">
+                <div class="card-body p-4">
+                    <h4 class="fw-bold mb-4">Order Summary</h4>
+                    <hr>
+                    {% for item in cart.items.all %}
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted small">{{ item.menu_item.name }} × {{ item.quantity }}</span>
+                        <span class="fw-semibold">Le {{ item.get_subtotal }}</span>
+                    </div>
+                    {% endfor %}
+                    <hr class="my-3">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Subtotal:</span>
+                        <span class="fw-semibold">Le {{ subtotal }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Delivery Fee:</span>
+                        <span class="fw-semibold">Le {{ delivery_fee }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">GST (5%):</span>
+                        <span class="fw-semibold">Le {{ gst }}</span>
+                    </div>
+                    <hr class="my-3">
+                    <div class="d-flex justify-content-between">
+                        <h5 class="fw-bold mb-0">Total:</h5>
+                        <h5 class="fw-bold text-primary mb-0">Le {{ total }}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkout Form -->
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h4 class="fw-bold mb-4">Delivery Details</h4>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        {% if user_role == 'waitress' and tables %}
+                        <div class="mb-3">
+                            <label for="table" class="form-label fw-semibold">Assign Table</label>
+                            <select id="table" name="table" class="form-select form-select-lg">
+                                <option value="">Choose a table...</option>
+                                {% for table in tables %}
+                                <option value="{{ table.id }}">{{ table.branch.name }} - Table {{ table.table_number }}
+                                    ({{ table.get_status_display }})</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        {% elif user_role == 'waitress' and not tables %}
+                        <div class="alert alert-warning">No available tables are open for assignment. The order can
+                            still be placed without a table.</div>
+                        {% endif %}
+
+                        <div class="mb-3">
+                            <label for="delivery_address" class="form-label fw-semibold">Delivery Address</label>
+                            <textarea id="delivery_address" name="delivery_address" class="form-control" rows="4"
+                                required
+                                placeholder="Enter your full delivery address...">{{ customer.address }}</textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="phone" class="form-label fw-semibold">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-control form-control-lg"
+                                value="{{ customer.phone }}" required placeholder="+232 XX XXX XXX">
+                        </div>
+
+                        <div class="mb-4 border rounded-3 p-3 bg-light">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <label class="form-label fw-semibold mb-0">Share Live Customer Location</label>
+                                <button type="button" id="shareLocationBtn" class="btn btn-outline-primary btn-sm">Use
+                                    My GPS</button>
+                            </div>
+                            <p class="text-muted small mb-2">This sends your current GPS location to the delivery person
+                                so they can find the delivery target easily.</p>
+                            <div id="locationStatus" class="small text-muted">GPS will be requested when you click the
+                                button.</div>
+                            <input type="hidden" id="gps_latitude" name="gps_latitude">
+                            <input type="hidden" id="gps_longitude" name="gps_longitude">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="payment_method" class="form-label fw-semibold">Payment Method</label>
+                            <select id="payment_method" name="payment_method" class="form-select form-select-lg"
+                                required>
+                                <option value="mobile" selected>Mobile Money</option>
+                                <option value="orange_money">Orange Money</option>
+                                <option value="afrimoney">Afrimoney</option>
+                                <option value="cash">Cash on Delivery</option>
+                                <option value="card">Credit/Debit Card</option>
+                            </select>
+                        </div>
+
+                        <div id="mobile-payment-fields">
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Mobile Money Accounts</label>
+                                <div class="alert alert-light border rounded-3">
+                                    <p class="mb-1"><strong>Orange Money:</strong> +232 787 866 633</p>
+                                    <p class="mb-0"><strong>Afrimoney:</strong> +232 880 856 000</p>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="transaction_id" class="form-label fw-semibold">Transaction Code</label>
+                                <input type="text" id="transaction_id" name="transaction_id"
+                                    class="form-control form-control-lg"
+                                    placeholder="Paste your Orange Money or Afrimoney transaction code here" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="receipt_image" class="form-label fw-semibold">Upload Payment Proof</label>
+                                <input type="file" id="receipt_image" name="receipt_image"
+                                    class="form-control form-control-lg" accept="image/*" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="notes" class="form-label fw-semibold">Special Instructions (Optional)</label>
+                            <textarea id="notes" name="notes" class="form-control" rows="3"
+                                placeholder="Any special requests or delivery instructions..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg rounded-pill w-100 mb-3">
+                            <i class="fas fa-check-circle me-2"></i>Place Order
+                        </button>
+
+                        <div class="text-center">
+                            <small class="text-muted">
+                                <i class="fas fa-lock me-1"></i>Your payment information is secure and encrypted
+                            </small>
+                        </div>
+                    </form>
+                </div>
+                {% block extra_js %}
+                <script>
+                    const paymentMethodField = document.getElementById('payment_method');
+                    const mobileFields = document.getElementById('mobile-payment-fields');
+                    const transactionField = document.getElementById('transaction_id');
+                    const receiptField = document.getElementById('receipt_image');
+                    const shareLocationBtn = document.getElementById('shareLocationBtn');
+                    const locationStatus = document.getElementById('locationStatus');
+                    const gpsLatitude = document.getElementById('gps_latitude');
+                    const gpsLongitude = document.getElementById('gps_longitude');
+
+                    function updatePaymentFields() {
+                        const method = paymentMethodField.value;
+                        const mobileMethods = ['mobile', 'orange_money', 'afrimoney'];
+                        const showMobile = mobileMethods.includes(method);
+                        mobileFields.style.display = showMobile ? 'block' : 'none';
+                        transactionField.required = showMobile;
+                        receiptField.required = showMobile;
+                    }
+
+                    paymentMethodField.addEventListener('change', updatePaymentFields);
+                    updatePaymentFields();
+
+                    shareLocationBtn.addEventListener('click', function () {
+                        if (!('geolocation' in navigator)) {
+                            locationStatus.textContent = 'GPS is not supported by this browser.';
+                            locationStatus.className = 'small text-danger';
+                            return;
+                        }
+
+                        shareLocationBtn.disabled = true;
+                        shareLocationBtn.textContent = 'Getting location...';
+                        locationStatus.textContent = 'Requesting your current location...';
+                        locationStatus.className = 'small text-muted';
+
+                        navigator.geolocation.getCurrentPosition(
+                            function (position) {
+                                gpsLatitude.value = position.coords.latitude;
+                                gpsLongitude.value = position.coords.longitude;
+                                locationStatus.textContent = `Location ready: ${position.coords.latitude.toFixed(6)}, ${position.coords.longitude.toFixed(6)}`;
+                                locationStatus.className = 'small text-success';
+                                shareLocationBtn.textContent = 'Location Ready';
+                            },
+                            function (error) {
+                                locationStatus.textContent = 'Unable to access GPS. You can still place the order without live location.';
+                                locationStatus.className = 'small text-warning';
+                                shareLocationBtn.textContent = 'Use My GPS';
+                            },
+                            { enableHighAccuracy: true, timeout: 20000, maximumAge: 10000 }
+                        );
+                    });
+                </script>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
